@@ -5,3 +5,12 @@ DB_CONFIG = {
     "user": "postgres",
     "password": "postgres"
 }
+
+MYSQL_CONFIG = {
+    "host": "localhost",
+    "port": 3306,
+    "user": "root",
+    "password": "root",
+    "database": "lab2_db",
+    "charset": "utf8mb4"
+}

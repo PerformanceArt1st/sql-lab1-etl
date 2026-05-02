@@ -2,9 +2,8 @@
 CREATE OR REPLACE FUNCTION s_psql_dds.fn_etl_data_load(start_date DATE, end_date DATE)
 RETURNS VOID AS $$
 BEGIN
-    -- Удаляем старые данные за период для реализации Type 1 (overwrite)
-    DELETE FROM s_psql_dds.t_sql_source_structured
-    WHERE event_date BETWEEN start_date AND end_date;
+    -- Станет (удаляем ВСЕ данные перед вставкой):
+    TRUNCATE TABLE s_psql_dds.t_sql_source_structured;
 
     INSERT INTO s_psql_dds.t_sql_source_structured (
         id, event_date, category, region, customer_age, income,
