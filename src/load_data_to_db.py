@@ -6,6 +6,8 @@ def load_data_to_db(df):
     conn = psycopg2.connect(**DB_CONFIG)
     cur = conn.cursor()
     
+    cur.execute("TRUNCATE TABLE s_psql_dds.t_sql_source_unstructured;")
+    
     # Приводим всё к строке и заменяем NaN/None на пустую строку для VARCHAR
     df = df.astype(str).replace('nan', '').replace('None', '')
     tuples = [tuple(x) for x in df.values]

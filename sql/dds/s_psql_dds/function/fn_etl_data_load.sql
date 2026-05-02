@@ -30,6 +30,7 @@ BEGIN
     FROM s_psql_dds.t_sql_source_unstructured
     WHERE event_date ~ '^\d{4}-\d{2}-\d{2}$'
       AND event_date::DATE BETWEEN start_date AND end_date
-      AND id IS NOT NULL;
+      AND id IS NOT NULL
+    ON CONFLICT (id) DO NOTHING;
 END;
 $$ LANGUAGE plpgsql;
