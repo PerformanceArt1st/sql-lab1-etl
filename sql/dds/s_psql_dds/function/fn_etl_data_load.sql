@@ -2,9 +2,6 @@
 CREATE OR REPLACE FUNCTION s_psql_dds.fn_etl_data_load(start_date DATE, end_date DATE)
 RETURNS VOID AS $$
 BEGIN
-    -- Станет (удаляем ВСЕ данные перед вставкой):
-    TRUNCATE TABLE s_psql_dds.t_sql_source_structured;
-
     INSERT INTO s_psql_dds.t_sql_source_structured (
         id, event_date, category, region, customer_age, income,
         transaction_amount, rating, is_premium, notes
